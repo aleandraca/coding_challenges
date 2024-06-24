@@ -1,5 +1,5 @@
-public class BinaryGap{
-  public static void main(String[] args){
+public class BinaryGap {
+  public static void main(String[] args) {
     // n=561892=10001001001011100100_2
     var n = 561892;
     var solution = solution(n);
@@ -7,19 +7,18 @@ public class BinaryGap{
     assert solution == 3;
   }
 
-  public static int solution(int n){
+  public static int solution(int n) {
     var bin = Integer.toBinaryString(n).toCharArray();
-    var gap = 0;
-    var maxGap = 0;
-    for(char bit : bin)
-      if(bit == '0')
+    int gap = 0;
+    int maxGap = 0;
+    for (var bit : bin) {
+      if (bit == '0') {
         gap++;
-      else {
-        if(gap > maxGap)
-          maxGap = gap;
+      } else {
+        maxGap = gap > maxGap ? gap : maxGap;
         gap = 0;
       }
+    }
     return maxGap;
   }
 }
-
