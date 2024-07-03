@@ -11,7 +11,10 @@ public class OddOccurrencesInArray {
     int ex = 7;
     int ac = functionalSolution(a);
     System.out.println((ex == ac ? "🟢" : "🔴") + " Result -> " + ac);
+    ;
     ac = imperativeSolution(a);
+    System.out.println((ex == ac ? "🟢" : "🔴") + " Result -> " + ac);
+    ac = setSolution(a);
     System.out.println((ex == ac ? "🟢" : "🔴") + " Result -> " + ac);
   }
 
@@ -25,5 +28,17 @@ public class OddOccurrencesInArray {
       result ^= num;
     }
     return result;
+  }
+
+  public static int setSolution(int[] a) {
+    var set = new HashSet<Integer>();
+    for (int num : a) {
+      if (set.contains(num)) {
+        set.remove(num);
+      } else {
+        set.add(num);
+      }
+    }
+    return set.iterator().next();
   }
 }
