@@ -12,7 +12,7 @@ public class PermMissingElem {
   // than an int can hold, since the max for the problem is 100,000
   public static int solution(int[] a) {
     int n = a.length + 1;
-    long total = n * (n + 1l) / 2; // Gauss's formula
+    long total = n * (n + 1L) / 2; // Gauss's formula
     long sum = Arrays.stream(a).asLongStream().sum();
     return (int) (total - sum);
   }
@@ -27,6 +27,22 @@ public class PermMissingElem {
       result = result ^ a[i] ^ (i + 1);
     }
     return result ^ (a.length + 1);
+  }
+
+  public static int loopSolution(int[] a) {
+    long total = 0;
+    for (int i = 0; i <= a.length + 1; i++) {
+      total += i;
+    }
+    for (int num : a) {
+      total -= num;
+    }
+    return (int) total;
+  }
+
+  public static int compactSolution(int[] a) {
+    long n = a.length + 1;
+    return (int) (n * (n + 1) / 2) - IntStream.of(a).sum();
   }
 
   public static void test_solution_with(int n) {
