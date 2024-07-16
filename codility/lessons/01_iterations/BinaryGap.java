@@ -1,10 +1,15 @@
+/**
+ * Codility > Lesson 1 > Iterations > BinaryGap
+ * https://app.codility.com/programmers/lessons/1-iterations/binary_gap/
+ */
 public class BinaryGap {
   public static void main(String[] args) {
-    // n=561892=10001001001011100100_2
-    var n = 561892;
-    var solution = solution(n);
-    System.out.println("Solution: " + solution + " when n = " + n);
-    assert bitwiseSolution(n) == 3;
+    int n = 72; // in binary: 1001000
+    int actual = solution(n);
+    var expected = 2;
+    System.out.println((actual == expected ? "🟢" : "🔴")
+        + " Result " + actual
+        + " Expected " + expected);
   }
 
   public static int solution(int n) {
@@ -15,7 +20,7 @@ public class BinaryGap {
       if (bit == '0') {
         gap++;
       } else {
-        maxGap = gap > maxGap ? gap : maxGap;
+        maxGap = Math.max(gap, maxGap);
         gap = 0;
       }
     }
