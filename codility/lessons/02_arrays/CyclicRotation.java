@@ -19,11 +19,10 @@ public class CyclicRotation {
   // 100% O(n) Making use of modular arithmetic
   public static int[] solution1(int[] a, int k) {
     int n = a.length;
-    if (n == 0 || k % n == 0) {
+    if (n < 2 || k % n == 0) {
       return a;
     }
     var b = new int[n];
-    k = k % n;
     for (int i = 0; i < n; i++) {
       b[(i + k) % n] = a[i];
     }
