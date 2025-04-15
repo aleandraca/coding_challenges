@@ -45,6 +45,19 @@ public class PermMissingElem {
     return (int) (n * (n + 1) / 2) - IntStream.of(a).sum();
   }
 
+  public static int arraySolution(int[] a) {
+    var b = new boolean[a.length + 1];
+    for (int num : a) {
+      b[num - 1] = true;
+    }
+    for (int i = 0; i < b.length; i++) {
+      if (!b[i]) {
+        return i + 1;
+      }
+    }
+    return 0;
+  }
+
   public static void test_solution_with(int n) {
     List<Integer> a = IntStream.rangeClosed(1, n).boxed()
         .collect(Collectors.toCollection(LinkedList::new));
@@ -52,7 +65,7 @@ public class PermMissingElem {
     a.remove(removed);
     int ex = removed + 1;
     var array = a.stream().mapToInt(Integer::intValue).toArray();
-    int actual = solution(array);
+    int actual = arraySolution(array);
     System.out.println((ex == actual ? "🟢" : "🔴") + " Result " + actual + " Expected " + ex);
   }
 }
