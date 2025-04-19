@@ -9,11 +9,24 @@ import java.util.*;
 public class FirstUnique {
   public static void main(String[] args) {
     var a = new int[] { 4, 10, 5, 4, 2, 10 };
-    System.out.println(Arrays.toString(a) + " -> " + solution1(a));
+    System.out.println(Arrays.toString(a) + " -> " + simpleSolution(a));
     var b = new int[] { 1, 4, 3, 3, 1, 2 };
-    System.out.println(Arrays.toString(b) + " -> " + solution1(b));
+    System.out.println(Arrays.toString(b) + " -> " + simpleSolution(b));
     var c = new int[] { 6, 4, 4, 6 };
-    System.out.println(Arrays.toString(c) + " -> " + solution1(c));
+    System.out.println(Arrays.toString(c) + " -> " + simpleSolution(c));
+  }
+
+  public static int simpleSolution(int[] a) {
+    var map = new HashMap<Integer, Integer>();
+    for (int num : a) {
+      map.merge(num, 1, Integer::sum);
+    }
+    for (int num : a) {
+      if (map.get(num) == 1) {
+        return num;
+      }
+    }
+    return -1;
   }
 
   // Functional approach with streams
