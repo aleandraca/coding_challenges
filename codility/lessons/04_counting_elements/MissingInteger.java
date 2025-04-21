@@ -23,11 +23,11 @@ public class MissingInteger {
       max = Math.max(num, max);
     }
     int i = 1;
-    for (; i < max; i++) {
+    for (; i <= max; i++) {
       if (!set.contains(i)) {
         return i;
       }
     }
-    return i == max ? i + 1 : 1;
+    return max <= 0 ? 1 : i;
   }
 }
