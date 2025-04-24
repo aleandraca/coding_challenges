@@ -16,19 +16,6 @@ public class FirstUnique {
     System.out.println(Arrays.toString(c) + " -> " + simpleSolution(c));
   }
 
-  public static int simpleSolution(int[] a) {
-    var map = new HashMap<Integer, Integer>();
-    for (int num : a) {
-      map.merge(num, 1, Integer::sum);
-    }
-    for (int num : a) {
-      if (map.get(num) == 1) {
-        return num;
-      }
-    }
-    return -1;
-  }
-
   // Functional approach with streams
   public static int solution1(int[] a) {
     var map = new LinkedHashMap<Integer, Integer>();
