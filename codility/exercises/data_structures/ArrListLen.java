@@ -12,12 +12,12 @@ public class ArrListLen {
   }
 
   public static int solution(int[] nums) {
-    int i = 1;
-    int next = 0;
-    while (nums[next] != -1) {
-      next = nums[next];
-      i++;
+    int index = 0;
+    int length = 0;
+    while (index != -1) {
+      index = nums[index];
+      length++;
     }
-    return i;
+    return length;
   }
 }
