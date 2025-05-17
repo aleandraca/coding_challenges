@@ -13,25 +13,25 @@ public class FrogRiverOne {
     System.out.println((ex == actual ? "🟢" : "🔴") + " Result " + actual + " Expected " + ex);
   }
 
-  // O(n) | 100%
+  // O(n) array-based | 100%
   public static int arraySolution(int x, int[] a) {
-    var freqs = new int[x + 1];
-    var uniqueCount = 0;
+    var leaves = new boolean[x + 1];
+    int uniqueLeaves = 0;
     for (int i = 0; i < a.length; i++) {
-      if (freqs[a[i]] == 0 && ++uniqueCount == x) {
+      if (!leaves[a[i]] && ++uniqueLeaves == x) {
         return i;
       }
-      freqs[a[i]] = 1;
+      leaves[a[i]] = true;
     }
     return -1;
   }
 
-  // O(n) | 100%
+  // O(n) set-based | 100%
   public static int setSolution(int x, int[] a) {
     var set = new HashSet<Integer>();
-    int uniqueCount = 0;
     for (int i = 0; i < a.length; i++) {
-      if (set.add(a[i]) && ++uniqueCount == x) {
+      set.add(a[i]);
+      if (set.size() == x) {
         return i;
       }
     }
