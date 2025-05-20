@@ -19,7 +19,7 @@ public class OddOccurrencesInArray {
   }
 
   public static int functionalSolution(int[] a) {
-    return Arrays.stream(a).reduce(0, (acc, curr) -> acc ^= curr);
+    return Arrays.stream(a).reduce(0, (acc, curr) -> acc ^ curr);
   }
 
   public static int imperativeSolution(int[] a) {
