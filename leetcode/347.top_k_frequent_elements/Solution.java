@@ -18,16 +18,15 @@ public class Solution {
     });
     var topKResult = new int[k];
     int resultIndex = 0;
-    for (int i = maxFrequency - 1; i >= 0 && resultIndex < k; i--) {
+    for (int i = maxFrequency - 1; i >= 0; i--) {
       for (int num : buckets.get(i)) {
-        if (resultIndex < k) {
-          topKResult[resultIndex++] = num;
-        } else {
-          break;
+        topKResult[resultIndex++] = num;
+        if (resultIndex == k) {
+          return topKResult;
         }
       }
     }
-    return topKResult;
+    return null;
   }
 
   public static void main(String[] args) {
